@@ -5,6 +5,8 @@
 #include <QStackedWidget>
 #include <QVBoxLayout>
 #include <QPushButton>
+#include <QLabel>
+#include <QPixmap>
 
 class Menu : public QWidget
 {

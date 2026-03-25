@@ -2,6 +2,8 @@
 #define GAME_H
 
 #include <QWidget>
+#include <QVBoxLayout>
+#include "display.h"
 
 class Game : public QWidget
 {

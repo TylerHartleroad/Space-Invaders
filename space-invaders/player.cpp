@@ -24,6 +24,7 @@ void Player::Update()
             if(dx < playerWidth + bulletSystem->GetBulletWidth() && dy < playerHeight + bulletSystem->GetBulletHeight())
             {
                 lives--;
+                emit LivesUpdated(lives);
                 emit PlayerHit();
                 if(lives == 0)
                 {

@@ -41,7 +41,7 @@ signals:
 private:
     // Aliens
     QVector<Alien> aliens;
-    QPoint position;
+    QPoint position = QPoint(0, 0);
     int rows = 5;
     int columns = 11;
     float alienWidth = 35;

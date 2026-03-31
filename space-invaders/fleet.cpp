@@ -118,6 +118,7 @@ void Fleet::Draw(QPainter* painter)
 
 void Fleet::Spawn()
 {
+    position = QPoint(0, 0);
     for(auto it = AliensBegin(); it != AliensEnd(); it++)
     {
         it->alive = true;

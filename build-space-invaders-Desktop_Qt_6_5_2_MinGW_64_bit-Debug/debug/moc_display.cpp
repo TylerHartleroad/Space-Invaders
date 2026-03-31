@@ -43,17 +43,25 @@ static constexpr auto qt_meta_stringdata_CLASSDisplayENDCLASS = QtMocHelpers::st
     "",
     "PlayerRight",
     "PlayerShoot",
+    "ScoreAdded",
+    "NewLevel",
+    "LivesChanged",
+    "newLives",
     "GameLoop"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSDisplayENDCLASS_t {
-    uint offsetsAndSizes[12];
+    uint offsetsAndSizes[20];
     char stringdata0[8];
     char stringdata1[11];
     char stringdata2[1];
     char stringdata3[12];
     char stringdata4[12];
-    char stringdata5[9];
+    char stringdata5[11];
+    char stringdata6[9];
+    char stringdata7[13];
+    char stringdata8[9];
+    char stringdata9[9];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSDisplayENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -64,13 +72,21 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSDisplayENDCLASS_t qt_meta_strin
         QT_MOC_LITERAL(19, 0),  // ""
         QT_MOC_LITERAL(20, 11),  // "PlayerRight"
         QT_MOC_LITERAL(32, 11),  // "PlayerShoot"
-        QT_MOC_LITERAL(44, 8)   // "GameLoop"
+        QT_MOC_LITERAL(44, 10),  // "ScoreAdded"
+        QT_MOC_LITERAL(55, 8),  // "NewLevel"
+        QT_MOC_LITERAL(64, 12),  // "LivesChanged"
+        QT_MOC_LITERAL(77, 8),  // "newLives"
+        QT_MOC_LITERAL(86, 8)   // "GameLoop"
     },
     "Display",
     "PlayerLeft",
     "",
     "PlayerRight",
     "PlayerShoot",
+    "ScoreAdded",
+    "NewLevel",
+    "LivesChanged",
+    "newLives",
     "GameLoop"
 };
 #undef QT_MOC_LITERAL
@@ -83,7 +99,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSDisplayENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -91,12 +107,15 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSDisplayENDCLASS[] = {
        3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   38,    2, 0x06,    1 /* Public */,
-       3,    0,   39,    2, 0x06,    2 /* Public */,
-       4,    0,   40,    2, 0x06,    3 /* Public */,
+       1,    0,   56,    2, 0x06,    1 /* Public */,
+       3,    0,   57,    2, 0x06,    2 /* Public */,
+       4,    0,   58,    2, 0x06,    3 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       5,    0,   41,    2, 0x08,    4 /* Private */,
+       5,    0,   59,    2, 0x08,    4 /* Private */,
+       6,    0,   60,    2, 0x08,    5 /* Private */,
+       7,    1,   61,    2, 0x08,    6 /* Private */,
+       9,    0,   64,    2, 0x08,    8 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
@@ -104,6 +123,9 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSDisplayENDCLASS[] = {
     QMetaType::Void,
 
  // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    8,
     QMetaType::Void,
 
        0        // eod
@@ -124,6 +146,13 @@ Q_CONSTINIT const QMetaObject Display::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'PlayerShoot'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'ScoreAdded'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'NewLevel'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'LivesChanged'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'GameLoop'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
@@ -139,7 +168,10 @@ void Display::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         case 0: _t->PlayerLeft(); break;
         case 1: _t->PlayerRight(); break;
         case 2: _t->PlayerShoot(); break;
-        case 3: _t->GameLoop(); break;
+        case 3: _t->ScoreAdded(); break;
+        case 4: _t->NewLevel(); break;
+        case 5: _t->LivesChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 6: _t->GameLoop(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -166,7 +198,6 @@ void Display::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
             }
         }
     }
-    (void)_a;
 }
 
 const QMetaObject *Display::metaObject() const
@@ -188,13 +219,13 @@ int Display::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 7)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 4;
+        _id -= 7;
     }
     return _id;
 }

@@ -317,12 +317,14 @@ debug/moc_display.cpp: ../space-invaders/display.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtGui/qpainter.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtGui/qtextoption.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtGui/qpen.h \
-		../space-invaders/fleet.h \
-		../../../../Qt/6.5.2/mingw_64/include/QtCore/QPoint \
+		../../../../Qt/6.5.2/mingw_64/include/QtGui/QKeyEvent \
+		../space-invaders/bulletsystem.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtCore/QVector \
 		../../../../Qt/6.5.2/mingw_64/include/QtCore/qvector.h \
-		../space-invaders/bulletsystem.h \
+		../../../../Qt/6.5.2/mingw_64/include/QtCore/QPoint \
 		../../../../Qt/6.5.2/mingw_64/include/QtGui/QPixmap \
+		../space-invaders/fleet.h \
+		../space-invaders/player.h \
 		debug/moc_predefs.h \
 		../../../../Qt/6.5.2/mingw_64/bin/moc.exe
 	C:\Qt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/tdhar/Space-Invaders/build-space-invaders-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/6.5.2/mingw_64/mkspecs/win32-g++ -IC:/Users/tdhar/Space-Invaders/space-invaders -IC:/Qt/6.5.2/mingw_64/include -IC:/Qt/6.5.2/mingw_64/include/QtWidgets -IC:/Qt/6.5.2/mingw_64/include/QtGui -IC:/Qt/6.5.2/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\space-invaders\display.h -o debug\moc_display.cpp
@@ -631,12 +633,14 @@ debug/moc_game.cpp: ../space-invaders/game.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtGui/qpainter.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtGui/qtextoption.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtGui/qpen.h \
-		../space-invaders/fleet.h \
-		../../../../Qt/6.5.2/mingw_64/include/QtCore/QPoint \
+		../../../../Qt/6.5.2/mingw_64/include/QtGui/QKeyEvent \
+		../space-invaders/bulletsystem.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtCore/QVector \
 		../../../../Qt/6.5.2/mingw_64/include/QtCore/qvector.h \
-		../space-invaders/bulletsystem.h \
+		../../../../Qt/6.5.2/mingw_64/include/QtCore/QPoint \
 		../../../../Qt/6.5.2/mingw_64/include/QtGui/QPixmap \
+		../space-invaders/fleet.h \
+		../space-invaders/player.h \
 		debug/moc_predefs.h \
 		../../../../Qt/6.5.2/mingw_64/bin/moc.exe
 	C:\Qt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/tdhar/Space-Invaders/build-space-invaders-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/6.5.2/mingw_64/mkspecs/win32-g++ -IC:/Users/tdhar/Space-Invaders/space-invaders -IC:/Qt/6.5.2/mingw_64/include -IC:/Qt/6.5.2/mingw_64/include/QtWidgets -IC:/Qt/6.5.2/mingw_64/include/QtGui -IC:/Qt/6.5.2/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\space-invaders\game.h -o debug\moc_game.cpp
@@ -1427,12 +1431,14 @@ debug/display.o: ../space-invaders/display.cpp ../space-invaders/display.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtGui/qpainter.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtGui/qtextoption.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtGui/qpen.h \
-		../space-invaders/fleet.h \
-		../../../../Qt/6.5.2/mingw_64/include/QtCore/QPoint \
+		../../../../Qt/6.5.2/mingw_64/include/QtGui/QKeyEvent \
+		../space-invaders/bulletsystem.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtCore/QVector \
 		../../../../Qt/6.5.2/mingw_64/include/QtCore/qvector.h \
-		../space-invaders/bulletsystem.h \
-		../../../../Qt/6.5.2/mingw_64/include/QtGui/QPixmap
+		../../../../Qt/6.5.2/mingw_64/include/QtCore/QPoint \
+		../../../../Qt/6.5.2/mingw_64/include/QtGui/QPixmap \
+		../space-invaders/fleet.h \
+		../space-invaders/player.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\display.o ..\space-invaders\display.cpp
 
 debug/fleet.o: ../space-invaders/fleet.cpp ../space-invaders/fleet.h \
@@ -1737,12 +1743,14 @@ debug/game.o: ../space-invaders/game.cpp ../space-invaders/game.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtGui/qpainter.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtGui/qtextoption.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtGui/qpen.h \
-		../space-invaders/fleet.h \
-		../../../../Qt/6.5.2/mingw_64/include/QtCore/QPoint \
+		../../../../Qt/6.5.2/mingw_64/include/QtGui/QKeyEvent \
+		../space-invaders/bulletsystem.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtCore/QVector \
 		../../../../Qt/6.5.2/mingw_64/include/QtCore/qvector.h \
-		../space-invaders/bulletsystem.h \
-		../../../../Qt/6.5.2/mingw_64/include/QtGui/QPixmap
+		../../../../Qt/6.5.2/mingw_64/include/QtCore/QPoint \
+		../../../../Qt/6.5.2/mingw_64/include/QtGui/QPixmap \
+		../space-invaders/fleet.h \
+		../space-invaders/player.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\game.o ..\space-invaders\game.cpp
 
 debug/main.o: ../space-invaders/main.cpp ../space-invaders/mainwindow.h \
@@ -1932,11 +1940,13 @@ debug/main.o: ../space-invaders/main.cpp ../space-invaders/mainwindow.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtGui/qpainter.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtGui/qtextoption.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtGui/qpen.h \
-		../space-invaders/fleet.h \
-		../../../../Qt/6.5.2/mingw_64/include/QtCore/QPoint \
+		../../../../Qt/6.5.2/mingw_64/include/QtGui/QKeyEvent \
+		../space-invaders/bulletsystem.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtCore/QVector \
 		../../../../Qt/6.5.2/mingw_64/include/QtCore/qvector.h \
-		../space-invaders/bulletsystem.h \
+		../../../../Qt/6.5.2/mingw_64/include/QtCore/QPoint \
+		../space-invaders/fleet.h \
+		../space-invaders/player.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtWidgets/QApplication \
 		../../../../Qt/6.5.2/mingw_64/include/QtWidgets/qapplication.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtCore/qcoreapplication.h \
@@ -2160,7 +2170,12 @@ debug/mainwindow.o: ../space-invaders/mainwindow.cpp ../space-invaders/mainwindo
 		../../../../Qt/6.5.2/mingw_64/include/QtGui/qtextcursor.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtGui/qtextformat.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtGui/qpen.h \
-		../../../../Qt/6.5.2/mingw_64/include/QtWidgets/QWidget
+		../../../../Qt/6.5.2/mingw_64/include/QtWidgets/QWidget \
+		../../../../Qt/6.5.2/mingw_64/include/QtWidgets/QVBoxLayout \
+		../../../../Qt/6.5.2/mingw_64/include/QtWidgets/qboxlayout.h \
+		../../../../Qt/6.5.2/mingw_64/include/QtWidgets/qlayout.h \
+		../../../../Qt/6.5.2/mingw_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt/6.5.2/mingw_64/include/QtWidgets/qgridlayout.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\space-invaders\mainwindow.cpp
 
 debug/menu.o: ../space-invaders/menu.cpp ../space-invaders/menu.h \

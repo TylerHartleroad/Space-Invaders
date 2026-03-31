@@ -16,6 +16,9 @@ public:
     bool IsRunning();
 
 signals:
+    void scoreChanged(int newScore);
+    void levelChanged(int newLevel);
+    void livesChanged(int newLives);
 
 protected:
     void paintEvent(QPaintEvent* event);
@@ -32,6 +35,10 @@ private:
 
     // Images
     QPixmap enemy;
+
+    int score = 0;
+    int level = 1;
+    int lives = 3;
 
 };
 

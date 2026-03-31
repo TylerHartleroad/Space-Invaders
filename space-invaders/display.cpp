@@ -16,6 +16,10 @@ Display::Display(QWidget *parent)
     // Resize
     setFixedSize(fleet.GetWidth()*2, fleet.GetHeight()*3);
 
+    score = 0;
+    level = 1;
+    lives = 3;
+
     StartGame();
 }
 
@@ -64,6 +68,15 @@ void Display::paintEvent(QPaintEvent* event)
 
     // Background
     painter.fillRect(rect(), Qt::black);
+
+    // Draw score, level, lives
+    painter.setPen(Qt::white);
+    QFont font("Courier", 12, QFont::Bold);
+    painter.setFont(font);
+
+    painter.drawText(10, 20, "Score: " + QString::number(score));
+    painter.drawText(width() - 100, 20, "Level: " + QString::number(level));
+    painter.drawText(width() - 100, height() - 10, "Lives: " + QString::number(lives));
 
     // Draw fleet
     QPoint fleetPos = fleet.GetPosition();

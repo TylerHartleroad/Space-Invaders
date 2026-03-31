@@ -1,19 +1,30 @@
 #ifndef FLEET_H
 #define FLEET_H
 
+#include <QObject>
 #include <QPoint>
 #include <QRect>
 #include <QVector>
+#include <QPainter>
+#include"bulletsystem.h"
 
-class Fleet
+class Fleet : public QObject
 {
+    Q_OBJECT
+
 public:
-    Fleet();
+    struct Alien {
+        QPoint position;
+        bool alive;
+    };
+
+    explicit Fleet(BulletSystem* _bulletSystem);
     void Update();
+    void Draw(QPainter* painter);
     void Spawn();
     void Clear();
-    QVector<QPoint>::iterator AliensBegin();
-    QVector<QPoint>::iterator AliensEnd();
+    QVector<Alien>::iterator AliensBegin();
+    QVector<Alien>::iterator AliensEnd();
     int GetRows();
     int GetColumns();
     float GetWidth();
@@ -21,9 +32,15 @@ public:
     float GetAlienWidth();
     float GetAlienHeight();
     QPoint GetPosition();
+    bool AnyAlive();
+
+signals:
+    void AlienDestroyed();
+    void FleetDestroyed();
 
 private:
-    QVector<QPoint> aliens;
+    // Aliens
+    QVector<Alien> aliens;
     QPoint position;
     int rows = 5;
     int columns = 11;
@@ -35,6 +52,12 @@ private:
     int moveDelay = 15;
     int delayCount = 0;
     int fleetDirection = 1;
+
+    // Components
+    BulletSystem* bulletSystem;
+
+    // Images
+    QPixmap alienImage;
 };
 
 #endif // FLEET_H

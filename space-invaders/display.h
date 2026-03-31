@@ -4,7 +4,10 @@
 #include <QWidget>
 #include <QTimer>
 #include <QPainter>
+#include <QKeyEvent>
+#include "bulletsystem.h"
 #include "fleet.h"
+#include "player.h"
 
 class Display : public QWidget
 {
@@ -16,9 +19,14 @@ public:
     bool IsRunning();
 
 signals:
+    void PlayerLeft();
+    void PlayerRight();
+    void PlayerShoot();
 
 protected:
     void paintEvent(QPaintEvent* event);
+    void keyPressEvent(QKeyEvent *event);
+    void keyReleaseEvent(QKeyEvent *event);
 
 private slots:
     void GameLoop();
@@ -28,11 +36,13 @@ private:
     bool gameRunning = false;
 
     // Components
+    BulletSystem bulletSystem;
+    Player player;
     Fleet fleet;
 
-    // Images
-    QPixmap enemy;
-
+    // Keys
+    bool leftDown = false;
+    bool rightDown = false;
 };
 
 #endif // DISPLAY_H

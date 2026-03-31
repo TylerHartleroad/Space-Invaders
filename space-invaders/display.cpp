@@ -1,21 +1,24 @@
 #include "display.h"
 
 Display::Display(QWidget *parent)
-    : QWidget{parent}
+    : QWidget{parent},
+    bulletSystem(width(), height()),
+    player(&bulletSystem, width(), height()),
+    fleet(&bulletSystem)
 {
     // Initialize timer
     timer = new QTimer();
     QWidget::connect(timer, &QTimer::timeout, this, &Display::GameLoop);
 
-    // Create Components
-    fleet = Fleet();
-
-    // Load images
-    enemy = QPixmap(":/images/example");
-
     // Resize
     setFixedSize(fleet.GetWidth()*2, fleet.GetHeight()*3);
 
+    // Connect
+    QObject::connect(this, &Display::PlayerLeft, &player, &Player::MoveLeft);
+    QObject::connect(this, &Display::PlayerRight, &player, &Player::MoveRight);
+    QObject::connect(this, &Display::PlayerShoot, &player, &Player::Shoot);
+
+    setFocusPolicy(Qt::StrongFocus);
     StartGame();
 }
 
@@ -23,6 +26,8 @@ Display::Display(QWidget *parent)
 void Display::GameLoop()
 {
     // Update Components
+    bulletSystem.Update();
+    player.Update();
     fleet.Update();
 
     update();
@@ -65,17 +70,35 @@ void Display::paintEvent(QPaintEvent* event)
     // Background
     painter.fillRect(rect(), Qt::black);
 
-    // Draw fleet
-    QPoint fleetPos = fleet.GetPosition();
-    for(auto it = fleet.AliensBegin(); it != fleet.AliensEnd(); it++)
+    // Key Events
+    if(leftDown) emit PlayerLeft();
+    if(rightDown) emit PlayerRight();
+
+    // Draw Components
+    fleet.Draw(&painter);
+    player.Draw(&painter);
+    bulletSystem.Draw(&painter);
+
+}
+
+
+void Display::keyPressEvent(QKeyEvent *event)
+{
+    switch(event->key())
     {
-        QPoint pos = *it;
-        QRect rect = QRect(
-            fleetPos.rx() + pos.rx(),
-            fleetPos.ry() + pos.ry(),
-            fleet.GetAlienWidth(),
-            fleet.GetAlienHeight()
-        );
-        painter.drawPixmap(rect, enemy);
+    case Qt::Key_Left: leftDown = true; break;
+    case Qt::Key_Right: rightDown = true; break;
+    case Qt::Key_Space: if(!event->isAutoRepeat()) emit PlayerShoot(); break;
     }
 }
+
+
+void Display::keyReleaseEvent(QKeyEvent *event)
+{
+    switch(event->key())
+    {
+    case Qt::Key_Left: leftDown = false; break;
+    case Qt::Key_Right: rightDown = false; break;
+    }
+}
+

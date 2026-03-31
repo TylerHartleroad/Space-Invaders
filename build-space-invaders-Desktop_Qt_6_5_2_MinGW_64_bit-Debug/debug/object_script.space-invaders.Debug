@@ -1,11 +1,15 @@
+debug/bulletsystem.o
 debug/display.o
 debug/fleet.o
 debug/game.o
 debug/main.o
 debug/mainwindow.o
 debug/menu.o
+debug/player.o
 debug/qrc_resources.o
 debug/moc_display.o
+debug/moc_fleet.o
 debug/moc_game.o
 debug/moc_mainwindow.o
 debug/moc_menu.o
+debug/moc_player.o

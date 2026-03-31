@@ -11,7 +11,11 @@ class Game : public QWidget
 public:
     explicit Game(QWidget *parent = nullptr);
 
-signals:
+
+private:
+    int n_score = 0;
+    int n_level = 0;
+    int n_lives = 0;
 
 };
 

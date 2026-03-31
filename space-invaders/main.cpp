@@ -14,9 +14,11 @@ int main(int argc, char *argv[])
 
     auto menu = new Menu(stackedWidget);
     auto game = new Game();
+    auto layout = new QVBoxLayout();
 
     stackedWidget->addWidget(menu);
     stackedWidget->addWidget(game);
+    layout->addWidget(stackedWidget);
 
     stackedWidget->setCurrentIndex(0);
     w.setCentralWidget(stackedWidget);

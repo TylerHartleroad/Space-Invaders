@@ -23,6 +23,11 @@ signals:
     void PlayerRight();
     void PlayerShoot();
 
+private slots:
+    void ScoreAdded();
+    void NewLevel();
+    void LivesChanged(int newLives);
+
 protected:
     void paintEvent(QPaintEvent* event);
     void keyPressEvent(QKeyEvent *event);
@@ -43,6 +48,16 @@ private:
     // Keys
     bool leftDown = false;
     bool rightDown = false;
+
+    // Images
+    QPixmap enemy;
+
+    int score = 0;
+    int level = 1;
+    int lives = 3;
+
+    int alienScore = 100;
+
 };
 
 #endif // DISPLAY_H

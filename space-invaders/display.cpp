@@ -17,8 +17,15 @@ Display::Display(QWidget *parent)
     QObject::connect(this, &Display::PlayerLeft, &player, &Player::MoveLeft);
     QObject::connect(this, &Display::PlayerRight, &player, &Player::MoveRight);
     QObject::connect(this, &Display::PlayerShoot, &player, &Player::Shoot);
+    QObject::connect(&fleet, &Fleet::AlienDestroyed, this, &Display::ScoreAdded);
+    QObject::connect(&fleet, &Fleet::FleetDestroyed, this, &Display::NewLevel);
+    QObject::connect(&player, &Player::LivesUpdated, this, &Display::LivesChanged);
 
     setFocusPolicy(Qt::StrongFocus);
+    score = 0;
+    level = 1;
+    lives = 3;
+
     StartGame();
 }
 
@@ -79,6 +86,15 @@ void Display::paintEvent(QPaintEvent* event)
     player.Draw(&painter);
     bulletSystem.Draw(&painter);
 
+    // Draw score, level, lives
+    painter.setPen(Qt::white);
+    QFont font("Courier", 12, QFont::Bold);
+    painter.setFont(font);
+
+    painter.drawText(10, 20, "Score: " + QString::number(score));
+    painter.drawText(width() - 100, 20, "Level: " + QString::number(level));
+    painter.drawText(width() - 100, height() - 10, "Lives: " + QString::number(lives));
+
 }
 
 
@@ -102,3 +118,21 @@ void Display::keyReleaseEvent(QKeyEvent *event)
     }
 }
 
+
+void Display::ScoreAdded()
+{
+    score += alienScore;
+}
+
+
+void Display::NewLevel()
+{
+    level++;
+    fleet.Spawn();
+}
+
+
+void Display::LivesChanged(int newLives)
+{
+    lives = newLives;
+}

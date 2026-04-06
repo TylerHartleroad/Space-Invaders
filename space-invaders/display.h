@@ -8,6 +8,10 @@
 #include "bulletsystem.h"
 #include "fleet.h"
 #include "player.h"
+#include "bunker.h"
+
+#define BUNKER_GAP 100
+#define BUNKER_COUNT 4
 
 class Display : public QWidget
 {
@@ -44,6 +48,7 @@ private:
     BulletSystem bulletSystem;
     Player player;
     Fleet fleet;
+    QVector<Bunker> bunkers;
 
     // Keys
     bool leftDown = false;
@@ -52,6 +57,7 @@ private:
     // Images
     QPixmap enemy;
 
+    // Variables
     int score = 0;
     int level = 1;
     int lives = 3;

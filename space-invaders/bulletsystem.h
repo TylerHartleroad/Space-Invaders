@@ -20,6 +20,7 @@ public:
     void Draw(QPainter* painter);
     void CreateBullet(QPoint position, bool player);
     void DeleteBullet(int id);
+    void Resize(int w, int h);
     QVector<Bullet>::iterator BulletsBegin();
     QVector<Bullet>::iterator BulletsEnd();
     int GetBulletHeight();
@@ -36,7 +37,7 @@ private:
     float screenHeight;
     float bulletWidth = 3;
     float bulletHeight = 10;
-    float bulletVelocity = 6;
+    float bulletVelocity = 12;
 };
 
 #endif // BULLETSYSTEM_H

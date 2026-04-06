@@ -51,13 +51,20 @@ void BulletSystem::Draw(QPainter* painter)
     {
         Bullet bullet = *it;
         QRect rect = QRect(
-            bullet.position.rx(),
-            bullet.position.ry(),
+            bullet.position.rx() - bulletWidth/2,
+            bullet.position.ry() - bulletHeight/2,
             bulletWidth,
             bulletHeight
         );
         painter->drawPixmap(rect, bulletImage);
     }
+}
+
+
+void BulletSystem::Resize(int w, int h)
+{
+    screenWidth = w;
+    screenHeight = h;
 }
 
 

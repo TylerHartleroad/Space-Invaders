@@ -12,6 +12,19 @@ Display::Display(QWidget *parent)
 
     // Resize
     setFixedSize(fleet.GetWidth()*2, fleet.GetHeight()*3);
+    bulletSystem.Resize(width(), height());
+    player.Resize(width(), height());
+
+    for(int i = 0; i < 4; i++)
+    {
+        bunkers.push_back(Bunker(
+            &bulletSystem,
+            QPoint(
+                width() * (i + 0.5) / BUNKER_COUNT - Bunker::GetWidth()/2,
+                height() - BUNKER_GAP - Bunker::GetHeight()/2
+            )
+        ));
+    }
 
     // Connect
     QObject::connect(this, &Display::PlayerLeft, &player, &Player::MoveLeft);
@@ -22,9 +35,6 @@ Display::Display(QWidget *parent)
     QObject::connect(&player, &Player::LivesUpdated, this, &Display::LivesChanged);
 
     setFocusPolicy(Qt::StrongFocus);
-    score = 0;
-    level = 1;
-    lives = 3;
 
     StartGame();
 }
@@ -32,10 +42,15 @@ Display::Display(QWidget *parent)
 
 void Display::GameLoop()
 {
+    // Key Events
+    if(leftDown) emit PlayerLeft();
+    if(rightDown) emit PlayerRight();
+
     // Update Components
     bulletSystem.Update();
     player.Update();
     fleet.Update();
+    for(QVector<Bunker>::iterator it = bunkers.begin(); it != bunkers.end(); it++) it->Update();
 
     update();
 }
@@ -77,14 +92,11 @@ void Display::paintEvent(QPaintEvent* event)
     // Background
     painter.fillRect(rect(), Qt::black);
 
-    // Key Events
-    if(leftDown) emit PlayerLeft();
-    if(rightDown) emit PlayerRight();
-
     // Draw Components
     fleet.Draw(&painter);
     player.Draw(&painter);
     bulletSystem.Draw(&painter);
+    for(QVector<Bunker>::iterator it = bunkers.begin(); it != bunkers.end(); it++) it->Draw(&painter);
 
     // Draw score, level, lives
     painter.setPen(Qt::white);
@@ -128,6 +140,7 @@ void Display::ScoreAdded()
 void Display::NewLevel()
 {
     level++;
+    fleet.NewLevel();
     fleet.Spawn();
 }
 

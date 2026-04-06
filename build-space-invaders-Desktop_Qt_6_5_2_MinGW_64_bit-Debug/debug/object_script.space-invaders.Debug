@@ -1,4 +1,5 @@
 debug/bulletsystem.o
+debug/bunker.o
 debug/display.o
 debug/fleet.o
 debug/game.o

@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     bulletsystem.cpp \
+    bunker.cpp \
     display.cpp \
     fleet.cpp \
     game.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
 
 HEADERS += \
     bulletsystem.h \
+    bunker.h \
     display.h \
     fleet.h \
     game.h \

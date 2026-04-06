@@ -8,6 +8,9 @@
 #include <QPainter>
 #include"bulletsystem.h"
 
+#define MOVE_DELAY_DEFAULT 15
+#define BULLET_DELAY_DEFAULT 3
+
 class Fleet : public QObject
 {
     Q_OBJECT
@@ -33,6 +36,7 @@ public:
     float GetAlienHeight();
     QPoint GetPosition();
     bool AnyAlive();
+    void NewLevel();
 
 signals:
     void AlienDestroyed();
@@ -49,9 +53,13 @@ private:
     float spacing = 10;
     float width;
     float height;
-    int moveDelay = 15;
-    int delayCount = 0;
     int fleetDirection = 1;
+
+    // Relative Difficulty
+    int moveDelay = MOVE_DELAY_DEFAULT;
+    int delayCount = 0;
+    int bulletDelay = BULLET_DELAY_DEFAULT;
+    int bulletCount = 0;
 
     // Components
     BulletSystem* bulletSystem;

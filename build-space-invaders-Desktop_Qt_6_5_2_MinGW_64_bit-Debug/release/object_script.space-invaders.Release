@@ -1,4 +1,5 @@
 release/bulletsystem.o
+release/bunker.o
 release/display.o
 release/fleet.o
 release/game.o

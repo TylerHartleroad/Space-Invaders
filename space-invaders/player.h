@@ -14,6 +14,7 @@ public:
     void Update();
     void Draw(QPainter* painter);
     void Spawn();
+    void Resize(int w, int h);
 
 signals:
     void LivesUpdated(int lives);
@@ -32,10 +33,9 @@ private:
     int screenHeight;
     int playerWidth = 35;
     int playerHeight = 35;
-    int playerSpeed = 4;
     int edgeSpacing = 20;
     int lives = 3;
-    int speed = 4;
+    int speed = 8;
     QPixmap playerImage;
 };
 

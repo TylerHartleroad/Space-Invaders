@@ -19,9 +19,12 @@ void Player::Update()
         {
             if(it->player) continue;
 
-            int dx = abs(it->position.rx() - position.rx());
-            int dy = abs(it->position.ry() - position.ry());
-            if(dx < playerWidth + bulletSystem->GetBulletWidth() && dy < playerHeight + bulletSystem->GetBulletHeight())
+            if(
+                it->position.rx() > position.rx() &&
+                it->position.rx() < position.rx() + playerWidth &&
+                it->position.ry() > position.ry() &&
+                it->position.ry() < position.ry() + playerHeight
+            )
             {
                 lives--;
                 emit LivesUpdated(lives);
@@ -59,8 +62,16 @@ void Player::Spawn()
 
     position = QPoint(
         edgeSpacing,
-        screenHeight - edgeSpacing
+        screenHeight - edgeSpacing - playerHeight
     );
+}
+
+
+void Player::Resize(int w, int h)
+{
+    screenWidth = w;
+    screenHeight = h;
+    Spawn();
 }
 
 

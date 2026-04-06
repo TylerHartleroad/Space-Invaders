@@ -41,17 +41,25 @@ void Fleet::Update()
         if(AnyAlive())
         {
             // Spawn Bullets
-            int alienIndex = rand() % aliens.size();
+            if(bulletCount >= bulletDelay)
+            {
+                int alienIndex = rand() % aliens.size();
 
-            while(!aliens[alienIndex].alive) {
-                alienIndex++;
-                if(alienIndex >= aliens.size())
-                {
-                    alienIndex = 0;
+                while(!aliens[alienIndex].alive) {
+                    alienIndex++;
+                    if(alienIndex >= aliens.size())
+                    {
+                        alienIndex = 0;
+                    }
                 }
-            }
 
-            bulletSystem->CreateBullet(aliens[alienIndex].position + position, false);
+                bulletSystem->CreateBullet(aliens[alienIndex].position + position, false);
+                bulletCount = 0;
+            }
+            else
+            {
+                bulletCount++;
+            }
         }
 
         delayCount = 0;
@@ -123,6 +131,9 @@ void Fleet::Spawn()
     {
         it->alive = true;
     }
+
+    delayCount = 0;
+    bulletCount = 0;
 }
 
 
@@ -132,6 +143,9 @@ void Fleet::Clear()
     {
         it->alive = false;
     }
+
+    moveDelay = MOVE_DELAY_DEFAULT;
+    bulletDelay = BULLET_DELAY_DEFAULT;
 }
 
 
@@ -143,6 +157,13 @@ bool Fleet::AnyAlive()
     }
 
     return false;
+}
+
+
+void Fleet::NewLevel()
+{
+    if(bulletDelay > 0) bulletDelay--;
+    if(moveDelay > 0) moveDelay--;
 }
 
 

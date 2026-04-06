@@ -2160,16 +2160,6 @@ debug/mainwindow.o: ../space-invaders/mainwindow.cpp ../space-invaders/mainwindo
 		../../../../Qt/6.5.2/mingw_64/include/QtWidgets/qmenu.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtWidgets/QStatusBar \
 		../../../../Qt/6.5.2/mingw_64/include/QtWidgets/qstatusbar.h \
-		../../../../Qt/6.5.2/mingw_64/include/QtWidgets/QTextBrowser \
-		../../../../Qt/6.5.2/mingw_64/include/QtWidgets/qtextbrowser.h \
-		../../../../Qt/6.5.2/mingw_64/include/QtWidgets/qtextedit.h \
-		../../../../Qt/6.5.2/mingw_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Qt/6.5.2/mingw_64/include/QtWidgets/qframe.h \
-		../../../../Qt/6.5.2/mingw_64/include/QtGui/qtextdocument.h \
-		../../../../Qt/6.5.2/mingw_64/include/QtGui/qtextoption.h \
-		../../../../Qt/6.5.2/mingw_64/include/QtGui/qtextcursor.h \
-		../../../../Qt/6.5.2/mingw_64/include/QtGui/qtextformat.h \
-		../../../../Qt/6.5.2/mingw_64/include/QtGui/qpen.h \
 		../../../../Qt/6.5.2/mingw_64/include/QtWidgets/QWidget \
 		../../../../Qt/6.5.2/mingw_64/include/QtWidgets/QVBoxLayout \
 		../../../../Qt/6.5.2/mingw_64/include/QtWidgets/qboxlayout.h \

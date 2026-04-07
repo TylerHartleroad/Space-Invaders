@@ -29,7 +29,7 @@ void Player::Update()
                 lives--;
                 emit LivesUpdated(lives);
                 emit PlayerHit();
-                if(lives == 0)
+                if(lives <= 0)
                 {
                     emit PlayerDestroyed();
                 }

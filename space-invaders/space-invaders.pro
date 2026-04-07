@@ -14,6 +14,7 @@ SOURCES += \
     display.cpp \
     fleet.cpp \
     game.cpp \
+    gameover.cpp \
     main.cpp \
     mainwindow.cpp \
     menu.cpp \
@@ -25,6 +26,7 @@ HEADERS += \
     display.h \
     fleet.h \
     game.h \
+    gameover.h \
     mainwindow.h \
     menu.h \
     player.h

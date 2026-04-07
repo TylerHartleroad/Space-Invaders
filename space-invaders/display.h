@@ -17,11 +17,14 @@ public:
     void StartGame();
     void StopGame();
     bool IsRunning();
+    int GetScore();
+    int GetLevel();
 
 signals:
     void PlayerLeft();
     void PlayerRight();
     void PlayerShoot();
+    void PlayerDestroyed();
 
 private slots:
     void ScoreAdded();

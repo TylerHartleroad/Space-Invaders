@@ -20,6 +20,7 @@ Display::Display(QWidget *parent)
     QObject::connect(&fleet, &Fleet::AlienDestroyed, this, &Display::ScoreAdded);
     QObject::connect(&fleet, &Fleet::FleetDestroyed, this, &Display::NewLevel);
     QObject::connect(&player, &Player::LivesUpdated, this, &Display::LivesChanged);
+    QObject::connect(&player, &Player::PlayerDestroyed, this, &Display::PlayerDestroyed);
 
     setFocusPolicy(Qt::StrongFocus);
     score = 0;
@@ -136,3 +137,16 @@ void Display::LivesChanged(int newLives)
 {
     lives = newLives;
 }
+
+
+int Display::GetScore()
+{
+    return score;
+}
+
+
+int Display::GetLevel()
+{
+    return level;
+}
+

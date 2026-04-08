@@ -5,7 +5,9 @@ Fleet::Fleet(BulletSystem* _bulletSystem) : bulletSystem(_bulletSystem), QObject
     width = columns * alienWidth + (columns - 1) * spacing;
     height = rows * alienHeight + (rows - 1) * spacing;
 
-    alienImage = QPixmap(":/images/example");
+    alienImages.push_back(QPixmap(":/images/greenAlien.png"));
+    alienImages.push_back(QPixmap(":/images/squid.png"));
+    alienImages.push_back(QPixmap(":/images/example.png"));
 
     // Initialize aliens
     for(int i = 0; i < columns; i++)
@@ -14,7 +16,8 @@ Fleet::Fleet(BulletSystem* _bulletSystem) : bulletSystem(_bulletSystem), QObject
         {
             aliens.push_back(Alien {
                 QPoint(i * (alienWidth + spacing), j * (alienHeight + spacing)),
-                true
+                true,
+                (i + j) % 3
             });
         }
     }
@@ -119,7 +122,7 @@ void Fleet::Draw(QPainter* painter)
             alienWidth,
             alienHeight
         );
-        painter->drawPixmap(rect, alienImage);
+        painter->drawPixmap(rect, alienImages[it->imageIndex]);
     }
 }
 

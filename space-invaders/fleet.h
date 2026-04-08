@@ -19,6 +19,7 @@ public:
     struct Alien {
         QPoint position;
         bool alive;
+        int imageIndex;
     };
 
     explicit Fleet(BulletSystem* _bulletSystem);
@@ -65,7 +66,7 @@ private:
     BulletSystem* bulletSystem;
 
     // Images
-    QPixmap alienImage;
+    QVector<QPixmap> alienImages;
 };
 
 #endif // FLEET_H

@@ -3,8 +3,9 @@
 Display::Display(QWidget *parent)
     : QWidget{parent},
     bulletSystem(width(), height()),
-    player(&bulletSystem, width(), height()),
-    fleet(&bulletSystem)
+    player(&bulletSystem, &powerUpSystem, width(), height()),
+    fleet(&bulletSystem),
+    bonusAlien(&bulletSystem, &powerUpSystem)
 {
     // Initialize timer
     timer = new QTimer();
@@ -14,6 +15,8 @@ Display::Display(QWidget *parent)
     setFixedSize(fleet.GetWidth()*2, fleet.GetHeight()*3);
     bulletSystem.Resize(width(), height());
     player.Resize(width(), height());
+    bonusAlien.SetScreenWidth(width());
+    powerUpSystem.SetScreenHeight(height());
 
     for(int i = 0; i < 4; i++)
     {
@@ -51,6 +54,8 @@ void Display::GameLoop()
     bulletSystem.Update();
     player.Update();
     fleet.Update();
+    bonusAlien.Update();
+    powerUpSystem.Update();
     for(QVector<Bunker>::iterator it = bunkers.begin(); it != bunkers.end(); it++) it->Update();
 
     update();
@@ -97,6 +102,8 @@ void Display::paintEvent(QPaintEvent* event)
     fleet.Draw(&painter);
     player.Draw(&painter);
     bulletSystem.Draw(&painter);
+    bonusAlien.Draw(&painter);
+    powerUpSystem.Draw(&painter);
     for(QVector<Bunker>::iterator it = bunkers.begin(); it != bunkers.end(); it++) it->Draw(&painter);
 
     // Draw score, level, lives

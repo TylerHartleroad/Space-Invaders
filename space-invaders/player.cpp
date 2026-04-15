@@ -1,7 +1,8 @@
 #include "player.h"
 
-Player::Player(BulletSystem* _bulletSystem, int _screenWidth, int _screenHeight) :
+Player::Player(BulletSystem* _bulletSystem, PowerUpSystem* _powerUp, int _screenWidth, int _screenHeight) :
     bulletSystem(_bulletSystem),
+    powerUp(_powerUp),
     screenWidth(_screenWidth),
     screenHeight(_screenHeight)
 {
@@ -38,6 +39,35 @@ void Player::Update()
             }
         }
     }
+
+    // Shoot cooldown
+    if(shootDelayCount > 0) shootDelayCount--;
+
+    // Power up
+    if(powerUp->IsSpawned())
+    {
+        if(
+            powerUp->position.rx() + powerUp->GetSize() > position.rx() &&
+            powerUp->position.ry() + powerUp->GetSize() > position.ry() &&
+            powerUp->position.rx() < position.rx() + playerWidth &&
+            powerUp->position.ry() < position.ry() + playerHeight
+        )
+        {
+            powerUp->Despawn();
+            PowerUp();
+        }
+    }
+
+    if(powerCountDown > 0)
+    {
+        powerCountDown--;
+    }
+    else
+    {
+        currentPowerUp = NONE;
+    }
+
+
 }
 
 
@@ -78,23 +108,53 @@ void Player::Resize(int w, int h)
 void Player::MoveLeft()
 {
     if(lives == 0) return;
-    position.setX(position.rx() - speed);
+    int moveSpeed = speed;
+    if(currentPowerUp == MOVEMENT) moveSpeed *= 2;
+    position.setX(position.rx() - moveSpeed);
 }
 
 
 void Player::MoveRight()
 {
     if(lives == 0) return;
-    position.setX(position.rx() + speed);
+    int moveSpeed = speed;
+    if(currentPowerUp == MOVEMENT) moveSpeed *= 2;
+    position.setX(position.rx() + moveSpeed);
 }
 
 
 void Player::Shoot()
 {
+    // Can't shoot if dead
     if(lives == 0) return;
+
+    // Wait for delay
+    if(shootDelayCount > 0 && currentPowerUp != SHOOT) return;
+
+    shootDelayCount = SHOOT_DELAY;
+
+    // Spawn bullet
     QPoint bulletPos = QPoint(
         position.rx() + playerWidth/2,
         position.ry()
     );
     bulletSystem->CreateBullet(bulletPos, true);
+}
+
+
+void Player::PowerUp()
+{
+    int index = QRandomGenerator::global()->bounded(static_cast<int>(3));
+    currentPowerUp = static_cast<Power>(index);
+
+    if(currentPowerUp == LIFE)
+    {
+        lives++;
+        emit LivesUpdated(lives);
+        currentPowerUp = NONE;
+    }
+    else
+    {
+        powerCountDown = POWER_UP_LENGTH;
+    }
 }

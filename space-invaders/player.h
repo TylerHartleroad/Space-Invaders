@@ -3,14 +3,19 @@
 
 #include <QObject>
 #include <QPoint>
+#include <QRandomGenerator>
 #include "bulletsystem.h"
+#include "powerupsystem.h"
+
+#define SHOOT_DELAY 10
+#define POWER_UP_LENGTH (30 * 5)
 
 class Player : public QObject
 {
     Q_OBJECT
 
 public:
-    Player(BulletSystem* _bulletSystem, int _screenWidth, int _screenHeight);
+    Player(BulletSystem* _bulletSystem, PowerUpSystem* _powerUp, int _screenWidth, int _screenHeight);
     void Update();
     void Draw(QPainter* painter);
     void Spawn();
@@ -27,7 +32,17 @@ public slots:
     void Shoot();
 
 private:
+    void PowerUp();
+
+    enum Power {
+        MOVEMENT,
+        SHOOT,
+        LIFE,
+        NONE
+    };
+
     BulletSystem* bulletSystem;
+    PowerUpSystem* powerUp;
     QPoint position;
     int screenWidth;
     int screenHeight;
@@ -37,6 +52,9 @@ private:
     int lives = 3;
     int speed = 8;
     QPixmap playerImage;
+    int shootDelayCount = 0;
+    Power currentPowerUp = NONE;
+    int powerCountDown = 0;
 };
 
 #endif // PLAYER_H

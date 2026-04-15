@@ -1,8 +1,10 @@
+release/bonusalien.o
 release/bulletsystem.o
 release/bunker.o
 release/display.o
 release/fleet.o
 release/game.o
+release/gameover.o
 release/main.o
 release/mainwindow.o
 release/menu.o
@@ -11,6 +13,7 @@ release/qrc_resources.o
 release/moc_display.o
 release/moc_fleet.o
 release/moc_game.o
+release/moc_gameover.o
 release/moc_mainwindow.o
 release/moc_menu.o
 release/moc_player.o

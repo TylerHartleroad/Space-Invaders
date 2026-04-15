@@ -9,6 +9,8 @@
 #include "fleet.h"
 #include "player.h"
 #include "bunker.h"
+#include "bonusalien.h"
+#include "powerupsystem.h"
 
 #define BUNKER_GAP 100
 #define BUNKER_COUNT 4
@@ -52,6 +54,8 @@ private:
     Player player;
     Fleet fleet;
     QVector<Bunker> bunkers;
+    BonusAlien bonusAlien;
+    PowerUpSystem powerUpSystem;
 
     // Keys
     bool leftDown = false;

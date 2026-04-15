@@ -37,7 +37,8 @@ private:
     float screenHeight;
     float bulletWidth = 3;
     float bulletHeight = 10;
-    float bulletVelocity = 12;
+    float playerBulletVelocity = 24;
+    float alienBulletVelocity = 12;
 };
 
 #endif // BULLETSYSTEM_H

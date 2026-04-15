@@ -30,11 +30,11 @@ void BulletSystem::Update()
         QPoint pos = bullet.position;
         if(bullet.player)
         {
-            bullets[i].position.setY(bullet.position.ry() - bulletVelocity);
+            bullets[i].position.setY(bullet.position.ry() - playerBulletVelocity);
         }
         else
         {
-            bullets[i].position.setY(bullet.position.ry() + bulletVelocity);
+            bullets[i].position.setY(bullet.position.ry() + alienBulletVelocity);
         }
 
         if(pos.ry() < 0 || pos.ry() > screenHeight)
